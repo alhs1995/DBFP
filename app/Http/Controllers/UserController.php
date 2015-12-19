@@ -1,9 +1,6 @@
 <?php namespace App\Http\Controllers;
 
 use App;
-use App\Helper\JsonHelper;
-use App\Helper\LogHelper;
-use App\Helper\ReCaptchaHelper;
 use App\Role;
 use App\User;
 use Carbon\Carbon;
