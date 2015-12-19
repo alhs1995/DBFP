@@ -6,7 +6,17 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "laravelcollective/html": "5.1.*",
+        "nesbot/carbon": "~1.14",
+        "barryvdh/laravel-ide-helper": "^2.1",
+        "doctrine/dbal": "~2.3",
+        "zizaco/entrust": "dev-laravel-5",
+        "devfactory/minify": "1.0.*",
+        "thomaswelton/laravel-gravatar": "~1.0",
+        "barryvdh/laravel-debugbar": "^2.0",
+        "graham-campbell/throttle": "^5.1",
+        "guzzlehttp/guzzle": "^6.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

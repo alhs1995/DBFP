@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-tw',
 
     /*
     |--------------------------------------------------------------------------
@@ -136,6 +136,14 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+        Devfactory\Minify\MinifyServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
+        GrahamCampbell\Throttle\ThrottleServiceProvider::class,
+
+        //barryvdh/laravel-debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -144,6 +152,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+
+        //laravel-ide-helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
@@ -192,6 +204,14 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'HTML'      => Collective\Html\HtmlFacade::class,
+        'Carbon'    => Carbon\Carbon::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Minify'    => Devfactory\Minify\Facades\MinifyFacade::class,
+        'Gravatar'  => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'Throttle'  => GrahamCampbell\Throttle\Facades\Throttle::class,
 
     ],
 

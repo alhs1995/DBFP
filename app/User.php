@@ -9,31 +9,57 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+class User extends Model implements AuthenticatableContract,  CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable,  CanResetPassword, EntrustUserTrait;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
+    protected $fillable = [
+        'username',
+        'password',
+        'nickname',
+        'email',
+        'address',
+        'debug',
+        'confirm_code',
+        'confirm_at',
+        'register_ip',
+        'register_at',
+        'lastlogin_ip',
+        'lastlogin_at'
+    ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'email', 'password'];
-
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token'];
+
+    public function isConfirmed()
+    {
+        if (!empty($this->confirm_at)) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getNickname()
+    {
+        if (!empty($this->nickname)) {
+            $nickname = $this->nickname;
+        } else {
+            $nickname = explode("@", $this->email)[0];
+        }
+        return $nickname;
+    }
+
+    public function getInDebugModeAttribute()
+    {
+        //限管理員
+        if (!\Entrust::hasRole('admin')) {
+            return false;
+        }
+        if (!$this->debug) {
+            return false;
+        }
+        return true;
+    }
 }
